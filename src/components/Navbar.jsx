@@ -11,7 +11,7 @@ const NavbarEcommerce = ({data}) => {
                 <Navbar.Toggle aria-controls="navbar-nav" />
                 <Navbar.Collapse id="navbar-nav">
                     <Nav  className="me-auto">
-                        <Nav.Link as={Link} href="#"><CartWidget /></Nav.Link>
+                        <Nav.Link as={Link} to={"/cart"}><CartWidget /></Nav.Link>
                         <Nav.Link as={Link} to={"/"}>Home</Nav.Link>
                         <NavDropdown title="Categorias" id="categoryMenu">
                             <NavDropdown.Item as={Link} to={'categorie/accesorios-para-vehiculos-MLA5725'}>Accesorios para vehiculos</NavDropdown.Item>

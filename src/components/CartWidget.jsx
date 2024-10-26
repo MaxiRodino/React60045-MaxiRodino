@@ -1,10 +1,16 @@
 import {ShoppingCartOutlined} from '@ant-design/icons'
+import { useContext } from 'react'
+import { CartContext } from '../context/CartContext'
 
 const CartWidget = ({cantidad=0}) => {
-    return(
+  const [cart,,] = useContext(CartContext)
+
+  console.log(cart)
+
+  return(
         <div style={{display:'inline-block'}}>
           <ShoppingCartOutlined />
-          <span style={{fontSize:'12px'}}>{cantidad}</span>
+          <span style={{fontSize:'12px'}}>{cart.length}</span>
         </div>
     )
 } 

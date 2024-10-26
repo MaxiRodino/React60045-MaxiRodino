@@ -4,6 +4,8 @@ import { GetCategories, GetCategory } from "../asyncMock"
 import {Container, Col, Row} from "react-bootstrap"
 import { useLocation, Link, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import OnLoad from "./OnLoad"
+
 
 function slugify(input) {
     if (!input)
@@ -74,6 +76,7 @@ const ItemListContainer = ({category = true}) => {
     }, [ params])
 
     return(
+        data ?
         <Container>
             <Row className="mt-5">
                     {data?.map((element) => {
@@ -92,7 +95,10 @@ const ItemListContainer = ({category = true}) => {
                         }
                     )}
             </Row>
-        </Container>      
+        </Container>
+        : 
+          <OnLoad />
+              
     )
 }
 
