@@ -4,7 +4,7 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import AddOrder from "./AddOrder"
 
 const CheckOut = () => {
-    const [cart,,] = useContext(CartContext)
+    const [cart,,,deleteItem] = useContext(CartContext)
     let price = 0
     return(
         cart.length ? 
@@ -20,9 +20,10 @@ const CheckOut = () => {
                                 <Card.Body>
                                     <Card.Title>{element.description}</Card.Title>
                                     <Card.Text>${element.price}</Card.Text>
+                                    <Card.Text>Cantidad: {element.quantity}</Card.Text>
                                 </Card.Body>
                             </Card>
-                                <Button className="mt-5" onClick={() =>console.log("eliminar")}>Eliminar</Button>
+                                <Button className="mt-5" onClick={() =>deleteItem(element.id)}>Eliminar</Button>
                         </Col>
                         )
                     }

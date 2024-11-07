@@ -23,7 +23,7 @@ const AddOrder = () => {
                             id:element.id,
                             title:element.title,
                             price:element.price,
-                            
+                            quantity:element.quantity
                         }
                     )
                 })

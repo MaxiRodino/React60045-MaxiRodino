@@ -8,6 +8,7 @@ import { CartContext } from "../context/CartContext"
 
 const ItemDetailContainer = () => {
     const [element, setElement] = useState()
+    const [countCart, setCountCart] = useState(1)
     const {id} = useParams()
     const navigate = useNavigate()
     const [,,addItem] = useContext(CartContext)
@@ -21,8 +22,18 @@ const ItemDetailContainer = () => {
         
     }, [])
 
+    const handleClickIncrement = (e) =>{
+        if(countCart < 100)
+        setCountCart(countCart + 1)
+    }
+
+    const handleClickDecrement = (e) =>{
+        if(countCart > 1)
+        setCountCart(countCart - 1)
+    }
+
     const handleClick = (product) => {
-        addItem(product)
+        addItem(product, countCart)
     }
 
     return (
@@ -37,7 +48,13 @@ const ItemDetailContainer = () => {
                             <Card.Text>${element.price}</Card.Text>
                             <Card.Text>{element.condition}</Card.Text>
                             <Card.Text>{element.warranty}</Card.Text>
-                            <Button onClick={() => handleClick(element)}>Agregar al carrito</Button>
+                            <div className="d-flex  align-items-center">
+                                <button onClick={handleClickDecrement}>-</button>
+                                    <span>{countCart}</span>
+                                <button onClick={handleClickIncrement}>+</button>
+                                <Button onClick={() => handleClick(element)}>Agregar al carrito</Button>
+                            </div>
+                            
                         </Card.Body>
                     </Card>
                     <Button className="mt-5" onClick={() => navigate(-1)}>Volver</Button>
